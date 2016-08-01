@@ -7,6 +7,9 @@
   <string name="app_android">NetGuard דורש אנדרואיד 4.0 ואילך</string>
   <string name="app_license">על ידי שימוש NetGuard, אתה מסכים <a href="http://www.gnu.org/licenses/gpl.txt"> הרישיון הציבורי הכללי של גנו גרסה 3</a></string>
   <string name="app_first">תשומת לב רבה הוקדשה כדי לפתח ולבדוק את NetGuard, אך זה בלתי אפשרי להבטיח ש-NetGuard תפעל כראוי על כל מכשיר. שימוש בNetGuard מהווה הסכמה לתנאי \n\n <a href="http://www.gnu.org/licenses/gpl.txt"> הרישיון הציבורי הכללי של גנו גרסה 3</a></string>
+  <string name="app_admob">NetGuard uses Google\'s AdMob advertising service. AdMob\'s privacy policy is available <a href="https://www.google.com/intl/en/policies/privacy/">here</a>.</string>
+  <string name="app_agree">I agree</string>
+  <string name="app_disagree">I disagree</string>
   <string name="menu_search">חפש יישום</string>
   <string name="menu_filter">סנן יישומים</string>
   <string name="menu_app_user">הצג יישומי משתמש</string>
@@ -56,6 +59,7 @@
   <string name="setting_delay">השהה כיבוי מסך לאחרי %1$s דקות</string>
   <string name="setting_update">בדוק עבור עדכונים</string>
   <string name="setting_network_options">אפשרויות רשת</string>
+  <string name="setting_subnet">Subnet routing</string>
   <string name="setting_tethering">אפשר מודם סללורי</string>
   <string name="setting_lan">Allow LAN access</string>
   <string name="setting_ip6">Enable IPv6 traffic</string>
@@ -77,8 +81,14 @@
   <string name="setting_vpn4">VPN IPv4: %s</string>
   <string name="setting_vpn6">VPN IPv6: %s</string>
   <string name="setting_dns">VPN DNS: %s</string>
+  <string name="setting_socks5_enabled">Use SOCKS5 proxy</string>
+  <string name="setting_socks5_addr">SOCKS5 address: %s</string>
+  <string name="setting_socks5_port">SOCKS5 port: %s</string>
+  <string name="setting_socks5_username">SOCKS5 username: %s</string>
+  <string name="setting_socks5_password">SOCKS5 password: %s</string>
   <string name="setting_pcap_record_size">גודל רשומת PCAP: %s B</string>
   <string name="setting_pcap_file_size">חסם גודל קובץ PCAP: %s MB</string>
+  <string name="setting_watchdog">Watchdog: every %s minutes</string>
   <string name="setting_stats_category">התראת מהירות</string>
   <string name="setting_stats">הצג התראת מהירות</string>
   <string name="setting_stats_top">הצג את היישומים העליונים</string>
@@ -99,6 +109,7 @@
   <string name="summary_delay">לאחר כיבוי המסך, המשך להשתמש בחוקי מסך דולק למשך מספר הדקות שנבחר (הזן 0 כדי לבטל אפשרות זו)</string>
   <string name="summary_update">בדוק עבור עדכונים חדשים דרך GitHub באופן יומי</string>
   <string name="summary_tethering">בהתאם לגירסת אנדרואיד, ייתכן ומודם סללורי לא יפעל. לא ניתן לסנן תעבורת מודם סללורי.</string>
+  <string name="summary_subnet">Enable subnet routing; might enable Wi-Fi calling, but might also trigger bugs in Android and increase battery usage</string>
   <string name="summary_lan">Allow applications to connect to local area network addresses, like 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16</string>
   <string name="summary_ip6">Route IP version 6 traffic to NetGuard so it can selectively be allowed or blocked</string>
   <string name="summary_wifi_home">השתמש בחוקי רשת Wi-Fi רק לרשת שנבחרה (בחוקי רשת סללורית עבור רשתות Wi-Fi אחרות)</string>
@@ -113,7 +124,8 @@
   <string name="summary_filter">סינון מנות IP ביציאה מערוץ VPN. עלול להגביר צריכת סוללה.</string>
   <string name="summary_track_usage">עקוב אחרי מספר הבתים שנשלחו והתקבלו לכל יישום או כתובת. עלול להגביר צריכת סוללה.</string>
   <string name="summary_block_domains">מגיבי עם \'שגיאת שם\' (NXDOMAIN) לשמות מתחם חסומים. בורר זה אינו זמין כאשר קובץ hosts לא זמין.</string>
-  <string name="summary_proxy">כתובת IP ומספר הפורט של שרת פרוקסי SOCKS5</string>
+  <string name="summary_socks5_enabled">Only TCP traffic will be sent to the proxy server</string>
+  <string name="summary_watchdog">Periodically check if NetGuard is still running (enter zero to disable this option). This might result in extra battery usage.</string>
   <string name="summary_stats">הצג גרף מהירות רשת בהתראות</string>
   <string name="msg_sure">האם אתה בטוח?</string>
   <string name="msg_started">אוכף חוקים</string>
@@ -122,13 +134,14 @@
   <string name="msg_waiting">ממתין לאירוע</string>
   <string name="msg_disabled">NetGuard מנוטרל, השתמש במתג מעל כדי לאפשר את NetGuard</string>
   <string name="msg_revoked">NetGuard מנוטרל, ככל הנראה בגלל שימוש ביישום מבוסס VPN אחר</string>
-  <string name="msg_error">NetGuard נוטרל, עקב שגיאה פנימית</string>
-  <string name="msg_start_failed">שירות VPN לא הופעל, קרוב לוודאי בגלל באג בגירסת Android שלך. הפעלה מחדש של המכשיר או ביטול ההרשאת VPN באמצעות הגדרות אנדרואיד מNetGuard (במידת האפשר) עשוי לפתור (באופן זמני) את הבעיה.</string>
   <string name="msg_installed">\'%1$s\' מותקן</string>
+  <string name="msg_installed_n">Has been installed</string>
   <string name="msg_access">%1$s ניסה לגשת לאינטרנט</string>
+  <string name="msg_access_n">Attempted internet access</string>
   <string name="msg_completed">הפעולה הסתיימה</string>
   <string name="msg_vpn">NetGuard משתמש ב- VPN המקומי לסינון תעבורת האינטרנט. מסיבה זו, אנא אפשר חיבור VPN בתיבת הדו-שיח הבאה. תעבורת האינטרנט שלך אינה נשלחת לשרת VPN מרוחק.</string>
   <string name="msg_autostart">לא היתה אפשרות להפעיל את NetGuard באופן אוטומטי באתחול עקב באג בגירסת האנדרואיד</string>
+  <string name="msg_error">An unexpected error has occurred: \'%s\'</string>
   <string name="msg_try">נסה את NetGuard</string>
   <string name="msg_terms">בתרומתך אתה מסכים ל <a href="http://www.netguard.me/#terms"> תנאים והגבלות</a></string>
   <string name="msg_dimming">אם אין אפשרות ללחוץ על אישור בתיבת הדו-שיח הבאה, סביר להניח שיישום אחר (מסך עמעום) מתמרן את המסך.</string>
@@ -141,6 +154,8 @@
   <string name="msg_count">%dx</string>
   <string name="msg_doze">עבור תוצאות עקביות, ייעול הסוללה של אנדרואיד צריך להיות מכובה עבור NetGuard.
 \n\n עבור הדו שיח הבא.בחר ב\"כל האפלקציות\" בחלק העליון, בחר בNetGuard מתוך הרשימה וסמן \"אל תייעל\".</string>
+  <string name="msg_datasaving">For consistent results, the Android data saving options should be disabled for NetGuard
+\n\nIn the next dialog, enable the options \"Background data\" and \"Unrestricted data usage\"</string>
   <string name="msg_filter">שימוש בסינון יגרום לאנדרואיד לשייך לNetGuard את השימוש בתעבורת נתונים ובסוללה - אנדרואיד יניח שNetGuard משתמש בתעבורה ובסוללה, ולא היישומים המקוריים.</string>
   <string name="msg_log_disabled">רישום תעבורת הנתונים מנוטרל, אנא השתמש במתג מעל כדי לאפשר רישום. רישום התעבורה עלול להגביר את צריכת הסוללה.</string>
   <string name="msg_clear_rules">זה יאפס את הכללים והתנאים לערכי ברירת המחדל שלהם</string>
@@ -154,7 +169,10 @@
   <string name="msg_metered">הרשת מנוטרת</string>
   <string name="msg_queue">NetGuard עמוס</string>
   <string name="msg_update">עדכון זמין, הקש כדי להוריד</string>
-  <string name="msg_system">Managing system applications can be enabled in the advanced options</string>
+  <string name="msg_usage">You can allow (greenish) or deny (reddish) Wi-Fi or mobile internet access to by tapping on the icons next to an application</string>
+  <string name="msg_whitelist">Internet access is allowed by default, this can be changed in the settings</string>
+  <string name="msg_push">Push messages are mostly handled by the system component Play services, which is allowed internet access by default</string>
+  <string name="msg_system">Managing system applications can be enabled in the settings</string>
   <string name="msg_issue">Please describe the problem and indicate the time of the problem:</string>
   <string name="title_unmetered_allowed">תעבורה חופשית מאופשרת</string>
   <string name="title_unmetered_blocked">תעבורה חופשית חסומה</string>
@@ -165,25 +183,27 @@
   <string name="title_interactive_allowed">אפשר כאשר המסך פעיל</string>
   <string name="title_roaming_blocked">חסום בעת נדידה</string>
   <string name="title_metered">כברירת מחדל, מתייחס לחיבור Wi-Fi כתעבורה לא נימנת ולחיבור נייד כתעבורה נימנת</string>
+  <string name="title_internet">אין אישור אינטרנט</string>
+  <string name="title_disabled">מנוטרל</string>
   <string name="title_apply">להחיל את הכללים והתנאים</string>
   <string name="title_conditions">תנאים</string>
   <string name="title_screen_wifi">אפשר Wi-Fi כשהמסך פעיל</string>
   <string name="title_screen_other">אפשר נייד כשהמסך פעיל</string>
   <string name="title_roaming_symbol">R</string>
   <string name="title_roaming">חסום בעת נדידה</string>
-  <string name="title_disabled">מנוטרל</string>
-  <string name="title_internet">אין אישור אינטרנט</string>
   <string name="title_related">סנן דומים</string>
   <string name="title_access">נסיונות גישה</string>
   <string name="title_no_log"><u>רישום מנוטרל</u></string>
+  <string name="title_no_filter"><u>Filtering is not enabled</u></string>
   <string name="title_precedence">לכללי גישה יש קדימות על כללים אחרים</string>
+  <string name="title_options">Options</string>
+  <string name="title_notify">התרע על נסיונות גישה לאינטרנט</string>
   <string name="title_rate">דירוג</string>
   <string name="title_allow">אפשר</string>
   <string name="title_block">חסום</string>
   <string name="title_root">root</string>
   <string name="title_mediaserver">שרת מדיה</string>
   <string name="title_nobody">nobody</string>
-  <string name="title_notify">התרע על נסיונות גישה לאינטרנט</string>
   <string name="title_dontask">אל תשאל שוב</string>
   <string name="title_log_whois">Whois %1$s</string>
   <string name="title_log_port">פורט %1$d</string>
@@ -195,8 +215,11 @@
   <string name="title_pro_speed">התראת גרף מהירות הרשת</string>
   <string name="title_pro_theme">מראה (נושא, צבעים)</string>
   <string name="title_pro_all">כל מאפייני גירסת Pro מעל</string>
-  <string name="title_pro_buy">פרטים</string>
+  <string name="title_pro_dev">Support development</string>
+  <string name="title_pro_buy">Buy</string>
   <string name="title_pro_bought">מאופשר</string>
+  <string name="title_pro_details">Tap on a title for more information</string>
+  <string name="title_pro_ads">Buying any pro feature will disable all advertisements</string>
   <string name="title_pro_challenge">אתגר</string>
   <string name="title_pro_reponse">תגובה</string>
   <string-array name="themeNames">

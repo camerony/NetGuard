@@ -10,12 +10,12 @@ Frequently Asked Questions (FAQ)
 **(0) How do I use NetGuard?**
 
 * Enable the firewall using the switch in the action bar
-* Allow/deny Wi-Fi/mobile internet access using the icons along the right side of the application list
+* Allow (greenish) or deny (reddish) Wi-Fi or mobile internet access using the icons next to an application
 
 You can use the settings menu to change from blacklist mode (allow all in *Settings* but block unwanted applications in list) to whitelist mode (block all in *Settings* but allow favorite applications in list).
 
 * Red/orange/yellow/amber = internet access denied
-* Teal/blue/purple/grey = internet access allowd
+* Teal/blue/purple/grey = internet access allowed
 
 <a name="FAQ1"></a>
 **(1) Can NetGuard completely protect my privacy?**
@@ -26,6 +26,8 @@ This is the trade-off required to make a firewall which does not require root ac
 The firewall can only start when Android "allows" it to start,
 so it will not offer protection during early boot-up (although your network may not be loaded at that time).
 It will, however, be much better than nothing, especially if you are not rebooting often.
+
+Android N will allow NetGuard to be an [Always-On VPN](https://developer.android.com/preview/features/afw.html#always-on-vpn).
 
 If you want to protect yourself more, you can (at least in theory) disable Wi-Fi and mobile data before rebooting,
 and only enable them on reboot, after the firewall service has started (and the small key icon is visible in the status bar).
@@ -41,8 +43,9 @@ then no, because NetGuard needs to use this service. Android allows only one app
 <a name="FAQ3"></a>
 **(3) Can I use NetGuard on any Android version?**
 
-No, the minimum required Android version is 4.0 (Lollipop)
-because NetGuard uses the [addDisallowedApplication](http://developer.android.com/reference/android/net/VpnService.Builder.html#addDisallowedApplication(java.lang.String)) method.
+No, the minimum required Android version is 4.0 (KitKat)
+because NetGuard uses the [Android VPN service](https://developer.android.com/reference/android/net/VpnService.html),
+which was added in Android 4.0.
 
 <a name="FAQ4"></a>
 **(4) Will NetGuard use extra battery power?**
@@ -151,7 +154,7 @@ is incorrectly attributed to NetGuard instead to the Google Play™ store app.
 NetGuard requires at least Android 4.0, so it is not available in the Google Play™ store app for devices running older Android versions.
 
 <a name="FAQ19"></a>
-**(19) Why does aplication XYZ still have internet access?**
+**(19) Why does application XYZ still have internet access?**
 
 If you block internet access for an application, there is no way around it.
 However, applications could access the internet through other applications.
@@ -279,7 +282,7 @@ You can only purchase pro feature when you installed NetGuard from the Play stor
 Unless you are just testing NetGuard, there is no current reason to use them both, since they cover the same function (firewall),
 although with different base needs (AFWall+ needs a rooted device) and ways of doing their thing (AFWall+ uses iptables).
 
-Also you need to keep per applicaton access rules _always_ in sync,
+Also you need to keep per application access rules _always_ in sync,
 else the application will not be able to access the network,
 hence bringing another level of complexity when setting and assuring things work out.
 
@@ -316,8 +319,11 @@ As a workaround you can use the export/import function to apply specific setting
 <a name="FAQ34"></a>
 **(34) Can you add the condition 'when on foreground'?**
 
-Recent Android versions do not allow an application to query if other applications are in the foreground or background anymore,
-so this cannot be added. You can use the condition '*when screen is on*' instead.
+Recent Android versions do not allow an application to query if other applications are in the foreground or background
+without holding an [additional privacy violating permission](https://developer.android.com/reference/android/Manifest.permission.html#PACKAGE_USAGE_STATS)
+and at the expense of extra battery usage (because periodic polling is required) anymore,
+so this cannot be added without significant disadvantages.
+You can use the condition '*when screen is on*' instead.
 
 <a name="FAQ35"></a>
 **(35) Why does the VPN not start?**
@@ -335,9 +341,38 @@ Sometimes it helps to uninstall and install NetGuard again (be sure to export yo
 Since turning off the VPN service using the Android settings cannot be prevented,
 there is little use in adding PIN or password protection.
 
+<a name="FAQ37"></a>
+**(37) Why are the pro features so expensive?**
+
+The right question is "*why are there so many taxes and fees*":
+
+* VAT: 25% (depending on your country)
+* Google fee: 30%
+* Income tax: 50%
+
+So, what is left for the developer is just a fraction of what you pay.
+
+Despite NetGuard being *really* a lot of work, only some of the convenience and advanced features needs to be purchased,
+which means that NetGuard is basically free to use
+and that you don't need to pay anything to reduce your data usage, increase battery life and increase your privacy.
+
+Also note that most free applications will appear not to be sustainable in the end, whereas NetGuard is properly maintained and supported,
+and that free applications may have a catch, like sending privacy sensitive information to the internet.
+
+See [here](http://forum.xda-developers.com/showpost.php?p=67892427&postcount=3030) for some more information.
+
+<a name="FAQ38"></a>
+**(38) Why did NetGuard stop running?**
+
+On most devices, NetGuard will keep running in the background with its foreground service.
+On some devices (in particular some Samsung models), where there are lots of applications competing for memory, Android may still stop NetGuard as a last resort.
+Unfortunately this cannot be fixed from NetGuard, and can be considered a shortcoming of the device and/or as a bug in Android.
+
+<a name="FAQ39"></a>
+**(39) How does a VPN based firewall differ from a iptables based firewall?**
+
+See this [Stack Exchange question](http://android.stackexchange.com/questions/152087/any-security-difference-between-root-based-firewall-afwall-and-non-root-based).
+
 <br />
 
 **If you didn't find the answer to your question, you can ask your questions [in this forum](http://forum.xda-developers.com/showthread.php?t=3233012) or contact me directly [by e-mail](mailto:marcel+netguard@faircode.eu)**.
-
-If you want to request a new feature or want to report a bug, please [create an issue on GitHub](https://github.com/M66B/NetGuard/issues/new).
-
